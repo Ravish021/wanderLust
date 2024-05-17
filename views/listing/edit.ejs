@@ -1,0 +1,86 @@
+<% layout('/layouts/boilerplate') -%>
+<body>
+  <h2>Edit the Your listing</h2>
+  <form
+    method="POST"
+    action="/listing/<%=find._id%>?_method=PUT"
+    novalidate
+    class="needs-validation"
+    enctype="multipart/form-data"
+  >
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div class="mb-3">
+          <lable for="Title" class="form-label">Title</lable>
+          <input
+            type="text"
+            name="listing[title]"
+            class="form-control"
+            value="<%=find.title%>"
+            required
+          />
+          <div class="valid-feedback">looks good!</div>
+          <div class="invalid-feedback">Title Please!</div>
+        </div>
+        <div class="mb-3">
+          <lable for="description" class="form-label">Description</lable>
+          <textarea
+            name="listing[description]"
+            class="form-control"
+            cols="30"
+            rows="5"
+            required
+          >
+<%=find.description%></textarea
+          >
+          <div class="invalid-feedback">Please enter a short description!</div>
+        </div>
+        original image
+        <div class="img-thumbnail mb-3" >
+          <img class="rounded" src="<%=originalImageUrl%>">
+        </div>
+        <div class="mb-3 mt-3">
+          <lable for="image" class="form-label">Upload Image</lable>
+          <input
+            type="file"
+            name="listing[image]"
+            class="form-control" 
+          />
+          
+        </div>
+        <div class="mb-3">
+          <lable for="price" class="form-label">Price</lable>
+          <input
+            name="listing[price]"
+            required
+            value="<%=find.price%>"
+          />
+          <div class="invalid-feedback">Valid Price!</div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <lable for="location" class="form-label">Location</lable>
+            <input
+              type="text"
+              name="listing[location]"
+              value="<%=find.location%>"
+              required
+            />
+            <div class="invalid-feedback">location!</div>
+          </div>
+          <div class="mb-3 col-md-8">
+            <lable for="country" class="form-label">Country</lable>
+            <input
+              type="text"
+              name="listing[country]"
+              value="<%=find.country%>"
+              required
+            />
+            <div class="invalid-feedback">Country</div>
+          </div>
+        </div>
+        <button class="btn btn-dark add-btn mt-3">Add</button>
+      </div>
+    </div>
+  </form>
+</body>
